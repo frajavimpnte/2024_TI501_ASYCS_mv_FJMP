@@ -1,0 +1,257 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>2024 ITESS ASYCS</title>
+        <h:outputStylesheet 
+                library="webjars" 
+                name="bootstrap/5.3.3/css/bootstrap.min-jsf.css">
+        </h:outputStylesheet>
+        
+        <h:outputStylesheet 
+                library="css" 
+                name="style.css">
+        </h:outputStylesheet>
+        
+    </h:head>
+    <h:body>
+        <div class="container">
+            <!-- Navegación -->
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Navbar</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li><hr class="dropdown-divider"> </hr></li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                      </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                      </input>
+                      <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </nav>            
+            
+            <!-- breadcrumb -->
+            <!--
+            <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item active" aria-current="page">Home</li>
+            </ol>
+          </nav>
+            
+
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Library</li>
+            </ol>
+          </nav>
+
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Library</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Data</li>
+            </ol>
+          </nav>
+            -->
+            
+            <!-- carrousel -->
+            <div id="carouselExample" class="carousel slide">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <h:graphicImage  library="img" name="foco_encendido.png" class="d-block" alt="...">
+                    </h:graphicImage>
+                  </div>
+                  <div class="carousel-item">
+                    <h:graphicImage  library="img" name="foco_encendido.png" class="d-block" alt="...">
+                    </h:graphicImage>
+                  </div>
+                  <div class="carousel-item">
+                    <h:graphicImage  library="img" name="foco_encendido.png" class="d-block" alt="...">
+                    </h:graphicImage>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            <!-- Content here -->
+            
+            <h1> 2024 ITESS Analisis de señales y sistemas de comunicaciones </h1>
+            <h2>Complex numbers</h2>
+                <h:dataTable value="#{complexNumberBean.cn}" var="t">
+                <h:column>
+                    <!-- <f:facet name="header">Real</f:facet> -->
+                    #{t.a}
+                </h:column>
+                <h:column>
+                    <!-- <f:facet name="header">Imaginaría</f:facet> -->
+                    #{t.b}
+                </h:column>
+            </h:dataTable>
+            
+            <h2>Json data</h2>
+                json: #{complexNumberBean.toJsonb()}
+
+                <h:form>
+                    <h:commandButton type="button" value="Parse data!"
+                                     onclick="parseJSON('#{complexNumberBean.toJsonb()}')"/>
+                </h:form>
+
+                <script type="text/javascript">
+                   function parseJSON(dataJson) {
+                        obj = JSON.parse(dataJson);
+                         alert("size: " + obj.length + " obj[0].a:" + obj[2].a + " obj[0].b:" + obj[2].b);
+                    }
+                </script>
+                
+            <h2>Formulario and javascript </h2>
+                <h:form>
+                    <h:commandButton type="button" value="Click Me!"
+                        onclick="infoJS('#{complexNumberBean.cn}')"/>
+                </h:form>
+                <script type="text/javascript">
+                   function infoJS(data) {
+                        alert("data:" + data);
+                    }
+                </script>
+            
+            <h2>Canvas</h2>
+                <canvas id="myCanvas1" width="200" height="100" style="border:1px solid black;">
+                    Sorry, your browser does not support canvas.
+                </canvas>
+
+                <script>
+                    const canvas1 = document.getElementById("myCanvas1");
+                    const ctx1 = canvas1.getContext("2d");
+                    ctx1.fillStyle = "red";
+                        ctx1.fillRect(0,0,150,75);
+                </script>
+          
+            <h2> Serie de Fourier </h2>
+                <p> Nombre de la serie : #{fourierSerieBean.name} </p>
+                <h:dataTable value="#{fourierSerieBean.data}" var="t">
+                    <h:column>
+                        <f:facet name="header">Real</f:facet>
+                        #{t.a}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Imaginaría</f:facet>
+                        #{t.b}
+                    </h:column>
+                </h:dataTable>
+
+            
+            <h2> Canvas2 </h2>
+                <canvas id="myCanvas" width="600" height="300" style="border: 1px solid black;"></canvas>
+
+                <script type="text/javascript">
+                    window.onload = function () {
+                    var myLineChart = new LineChart({
+                        canvasId: "myCanvas",
+                        minX: 0,
+                        minY: 0,
+                        maxX: 140,
+                        maxY: 100,
+                        unitsPerTickX: 10,
+                        unitsPerTickY: 10
+                    });
+
+                    var data = [{
+                        x: 0,
+                        y: 0
+                    }, {
+                        x: 20,
+                        y: 10
+                    }, {
+                        x: 40,
+                        y: 15
+                    }, {
+                        x: 60,
+                        y: 40
+                    }, {
+                        x: 80,
+                        y: 60
+                    }, {
+                        x: 100,
+                        y: 50
+                    }, {
+                        x: 120,
+                        y: 85
+                    }, {
+                        x: 140,
+                        y: 100
+                    }];
+
+                    myLineChart.drawLine(data, "blue", 3);
+
+                    var data = [{
+                        x: 20,
+                        y: 85
+                    }, {
+                        x: 40,
+                        y: 75
+                    }, {
+                        x: 60,
+                        y: 75
+                    }, {
+                        x: 80,
+                        y: 45
+                    }, {
+                        x: 100,
+                        y: 65
+                    }, {
+                        x: 120,
+                        y: 40
+                    }, {
+                        x: 140,
+                        y: 35
+                    }];
+
+                    myLineChart.drawLine(data, "red", 3);
+                };
+                </script>
+        </div>
+       
+        <h:outputScript 
+                library="webjars" 
+                name="bootstrap/5.3.3/js/bootstrap.min.js">
+        </h:outputScript>
+        <h:outputScript 
+            library="js"
+            name="myplot.js">
+        </h:outputScript>
+    </h:body>
+</html>
